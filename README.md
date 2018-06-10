@@ -1,1 +1,1 @@
-# comprartigiano-wp-framework
+# madeinitalyslc-wp-framework
