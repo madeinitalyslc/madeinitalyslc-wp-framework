@@ -19,7 +19,7 @@ abstract class App extends Container
      */
     public function config($key, $default = null)
     {
-        if (! $this->get('config')) {
+        if (! $this->has('config')) {
             $this->singleton('config', function (App $app) {
                 return new Repository();
             });
