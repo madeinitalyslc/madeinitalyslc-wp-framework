@@ -4,8 +4,7 @@
     "description": "",
     "license": "proprietary",
     "require": {
-        "illuminate/container": "^5.6",
-        "illuminate/config": "^5.6"
+        "pimple/pimple": "^3.2"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1"

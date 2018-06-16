@@ -2,18 +2,15 @@
 
 namespace MadeInItalySLC\WP;
 
+use MadeInItalySLC\WP\Traits\WordPressTrait;
+use Pimple\Container;
+
 /**
  * Class Theme
  *
  * @package MadeInItalySLC\WP
  */
-abstract class Theme extends AddOn
+class Theme extends Container
 {
-    /**
-     * @return \WP_Theme
-     */
-    public function getInfo()
-    {
-        return wp_get_theme($this->getId());
-    }
+    use WordPressTrait;
 }
