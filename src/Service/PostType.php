@@ -2,7 +2,8 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Traits\ContainerTrait;
+use MadeInItalySLC\WP\Traits\WPContainerTrait;
+use MadeInItalySLC\WP\WPContainer;
 
 /**
  * Class PostType
@@ -11,7 +12,7 @@ use MadeInItalySLC\WP\Traits\ContainerTrait;
  */
 abstract class PostType
 {
-    use ContainerTrait;
+    use WPContainerTrait;
 
     /**
      * @return string
@@ -27,6 +28,16 @@ abstract class PostType
      * @return array
      */
     abstract public function getArgs();
+
+    /**
+     * PostType constructor.
+     *
+     * @param WPContainer $WPContainer
+     */
+    public function __construct(WPContainer $WPContainer)
+    {
+        $this->setContainer($WPContainer);
+    }
 
     /**
      *

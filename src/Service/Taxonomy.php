@@ -2,7 +2,8 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Traits\ContainerTrait;
+use MadeInItalySLC\WP\Traits\WPContainerTrait;
+use MadeInItalySLC\WP\WPContainer;
 
 /**
  * Class Taxonomy
@@ -11,7 +12,7 @@ use MadeInItalySLC\WP\Traits\ContainerTrait;
  */
 abstract class Taxonomy
 {
-    use ContainerTrait;
+    use WPContainerTrait;
 
     /**
      * @return string
@@ -32,6 +33,16 @@ abstract class Taxonomy
      * @return array
      */
     abstract public function getArgs();
+
+    /**
+     * Taxonomy constructor.
+     *
+     * @param WPContainer $WPContainer
+     */
+    public function __construct(WPContainer $WPContainer)
+    {
+        $this->setContainer($WPContainer);
+    }
 
     /**
      *
