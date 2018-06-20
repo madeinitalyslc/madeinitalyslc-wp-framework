@@ -3,30 +3,31 @@
 namespace MadeInItalySLC\WP;
 
 use Pimple\Container;
+use Psr\Container\ContainerInterface;
 
 /**
- * Class WPContainer
+ * Class WPApp
  *
  * @package MadeInItalySLC\WP
  */
-class WPContainer extends Container
+abstract class WPApp extends Container implements ContainerInterface
 {
-    /**
-     * @param string $id
-     * @return bool
-     */
-    public function has(string $id)
-    {
-        return $this->offsetExists($id);
-    }
-
     /**
      * @param string $id
      * @return mixed|null
      */
-    public function get(string $id)
+    public function get($id)
     {
         return ($this->has($id)) ? $this->offsetGet($id) : null;
+    }
+
+    /**
+     * @param string $id
+     * @return bool
+     */
+    public function has($id)
+    {
+        return $this->offsetExists($id);
     }
 
     /**

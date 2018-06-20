@@ -3,7 +3,7 @@
 namespace MadeInItalySLC\WP\Service;
 
 use MadeInItalySLC\WP\Traits\WPContainerTrait;
-use MadeInItalySLC\WP\WPContainer;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class PostType
@@ -32,11 +32,11 @@ abstract class PostType
     /**
      * PostType constructor.
      *
-     * @param WPContainer $WPContainer
+     * @param ContainerInterface $c
      */
-    public function __construct(WPContainer $WPContainer)
+    public function __construct(ContainerInterface $c)
     {
-        $this->setContainer($WPContainer);
+        $this->setContainer($c);
     }
 
     /**

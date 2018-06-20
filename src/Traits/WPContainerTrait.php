@@ -2,7 +2,8 @@
 
 namespace MadeInItalySLC\WP\Traits;
 
-use MadeInItalySLC\WP\WPContainer;
+use Pimple\Container;
+use Psr\Container\ContainerInterface;
 
 /**
  * Trait WPContainerTrait
@@ -12,12 +13,12 @@ use MadeInItalySLC\WP\WPContainer;
 trait WPContainerTrait
 {
     /**
-     * @var WPContainer
+     * @var ContainerInterface|Container|\Pimple\Psr11\Container
      */
     protected $container;
 
     /**
-     * @return WPContainer
+     * @return ContainerInterface|Container|\Pimple\Psr11\Container
      */
     public function getContainer()
     {
@@ -25,10 +26,10 @@ trait WPContainerTrait
     }
 
     /**
-     * @param WPContainer $WPContainer
+     * @param ContainerInterface|Container|\Pimple\Psr11\Container $c
      */
-    public function setContainer(WPContainer $WPContainer): void
+    public function setContainer(ContainerInterface $c)
     {
-        $this->container = $WPContainer;
+        $this->container = $c;
     }
 }
