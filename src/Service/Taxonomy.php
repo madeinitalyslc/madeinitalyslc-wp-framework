@@ -2,7 +2,7 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Traits\WPContainerTrait;
+use MadeInItalySLC\WP\Traits\ContainerAwareTrait;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -12,7 +12,7 @@ use Psr\Container\ContainerInterface;
  */
 abstract class Taxonomy
 {
-    use WPContainerTrait;
+    use ContainerAwareTrait;
 
     /**
      * @return string

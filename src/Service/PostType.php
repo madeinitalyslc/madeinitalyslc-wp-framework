@@ -2,8 +2,8 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Traits\WPContainerTrait;
-use Psr\Container\ContainerInterface;
+use MadeInItalySLC\WP\Contract\ContainerInterface;
+use MadeInItalySLC\WP\Traits\ContainerAwareTrait;
 
 /**
  * Class PostType
@@ -12,7 +12,7 @@ use Psr\Container\ContainerInterface;
  */
 abstract class PostType
 {
-    use WPContainerTrait;
+    use ContainerAwareTrait;
 
     /**
      * @return string
