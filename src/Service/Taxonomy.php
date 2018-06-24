@@ -2,7 +2,8 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Traits\ContainerAwareTrait;
+use MadeInItalySLC\Toolbox\ContainerAwareTrait;
+use MadeInItalySLC\Toolbox\Contract\ContainerAwareTraitInterface;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -10,7 +11,7 @@ use Psr\Container\ContainerInterface;
  *
  * @package MadeInItalySLC\WP\Service
  */
-abstract class Taxonomy
+abstract class Taxonomy implements ContainerAwareTraitInterface
 {
     use ContainerAwareTrait;
 

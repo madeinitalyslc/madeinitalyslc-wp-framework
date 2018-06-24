@@ -2,15 +2,16 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\WP\Contract\ContainerInterface;
-use MadeInItalySLC\WP\Traits\ContainerAwareTrait;
+use MadeInItalySLC\Toolbox\ContainerAwareTrait;
+use MadeInItalySLC\Toolbox\Contract\ContainerAwareTraitInterface;
+use Psr\Container\ContainerInterface;
 
 /**
  * Class PostType
  *
  * @package MadeInItalySLC\WP\Service
  */
-abstract class PostType
+abstract class PostType implements ContainerAwareTraitInterface
 {
     use ContainerAwareTrait;
 

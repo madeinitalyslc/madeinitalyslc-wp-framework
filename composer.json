@@ -3,9 +3,7 @@
     "name": "madeinitalyslc/mit-wp-framework",
     "description": "",
     "license": "MIT",
-    "require": {
-        "madeinitalyslc/mit-toolbox": "dev-master"
-    },
+    "require": {},
     "require-dev": {},
     "autoload": {
         "psr-4": {
