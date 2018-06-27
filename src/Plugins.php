@@ -2,13 +2,13 @@
 
 namespace MadeInItalySLC\WP;
 
-if (! class_exists(Plugin::class)) {
+if (! class_exists(Plugins::class)) {
     /**
-     * Class Plugin
+     * Class Plugins
      *
      * @package MadeInItalySLC\WP
      */
-    abstract class Plugin extends Addon
+    abstract class Plugins extends Addon
     {
 
     }
