@@ -14,14 +14,15 @@ if (! class_exists(Addon::class)) {
      */
     abstract class Addon extends Container implements AddonInterface
     {
-        use Traits\WPAddonTrait, Traits\Repository;
+        use Traits\WPAddonTrait, Traits\RepositoryTrait;
 
         /**
          * Addon constructor.
          */
         public function __construct()
         {
-            $this->('wp.id', function (Container $c) {
+            // todo: useless container binding
+            $this->bind('wp.id', function (Container $c) {
                 return $this->getId();
             });
 

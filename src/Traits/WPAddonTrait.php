@@ -10,8 +10,6 @@ if (! class_exists(WPAddonTrait::class)) {
      */
     trait WPAddonTrait
     {
-        use RepositoryTrait;
-
         /**
          * @param string $key
          * @param array|null $params
