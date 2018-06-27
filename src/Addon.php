@@ -5,6 +5,7 @@ namespace MadeInItalySLC\WP;
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use MadeInItalySLC\WP\Contract\AddonInterface;
+use MadeInItalySLC\WP\Contract\ConfigTraitInterface;
 use MadeInItalySLC\WP\Traits\ConfigTrait;
 use MadeInItalySLC\WP\Traits\WPAddonTrait;
 
@@ -14,7 +15,7 @@ if (! class_exists(Addon::class)) {
      *
      * @package MadeInItalySLC\WP
      */
-    abstract class Addon extends Container implements AddonInterface
+    abstract class Addon extends Container implements AddonInterface, ConfigTraitInterface
     {
         use ConfigTrait, WPAddonTrait;
 
