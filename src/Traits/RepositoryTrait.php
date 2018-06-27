@@ -21,28 +21,27 @@ if (! class_exists(RepositoryTrait::class)) {
         /**
          * @param string $key
          * @param array $values
+         * @return RepositoryInterface
          */
-        public function setRepository(string $key, array $values = [])
+        public function setRepository(string $key, array $values = []) : RepositoryInterface
         {
             $this->repos[$key] = new Repository($values);
 
-            return $this->repos[$key];
+            return $this->getRepository($key);
         }
 
         /**
-         * @param string $key
-         * @return RepositoryInterface
+         * @param string $repo
+         * @return null|RepositoryInterface
          */
-        public function getRepository(string $key) : RepositoryInterface
+        public function getRepository(string $repo) : RepositoryInterface
         {
-            if (isset($this->repos[$key])) {
-                $this->setRepository('config');
+            if (! isset($this->repos[$repo])) {
+                $this->setRepository($repo);
             }
 
-            /** @var RepositoryInterface $repo */
-            $repo = $this->repos[$key];
-
-            return $repo->get($key);
+            // todo made a fix for error when repo not isset
+            return $this->repos[$repo];
         }
 
         /**
