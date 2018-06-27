@@ -2,20 +2,22 @@
 
 namespace MadeInItalySLC\WP\Contract;
 
-/**
- * Interface AddonInterface
- *
- * @package MadeInItalySLC\WP\Contract
- */
-interface AddonInterface
-{
+if (! class_exists(AddonInterface::class)) {
     /**
-     * @return string
+     * Interface AddonInterface
+     *
+     * @package MadeInItalySLC\WP\Contract
      */
-    public function getId() : string;
+    interface AddonInterface
+    {
+        /**
+         * @return string
+         */
+        public function getId() : string;
 
-    /**
-     * @return string
-     */
-    public function getTextDomain() : string;
+        /**
+         * @return string
+         */
+        public function getTextDomain() : string;
+    }
 }

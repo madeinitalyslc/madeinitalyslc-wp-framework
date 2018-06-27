@@ -2,34 +2,14 @@
 
 namespace MadeInItalySLC\WP;
 
-use MadeInItalySLC\Toolbox\Application;
-use MadeInItalySLC\WP\Contract\AddonInterface;
-use MadeInItalySLC\WP\Traits\WPAddonTrait;
-
-/**
- * Class Theme
- * 
- * @package MadeInItalySLC\WP
- */
-abstract class Theme extends Application implements AddonInterface
-{
-    use WPAddonTrait;
-
+if (! class_exists(Theme::class)) {
     /**
-     * Plugin constructor.
+     * Class Theme
      *
-     * @param array $values
+     * @package MadeInItalySLC\WP
      */
-    public function __construct(array $values = [])
+    abstract class Theme extends Addon
     {
-        parent::__construct();
 
-        $this['wp.id'] = $this->getId();
-
-        $this['wp.text_domain'] = $this->getTextDomain();
-
-        foreach ($values as $key => $value) {
-            $this[$key] = $value;
-        }
     }
 }

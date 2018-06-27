@@ -2,28 +2,26 @@
 
 namespace MadeInItalySLC\WP\Traits;
 
-use Pimple\Exception\InvalidServiceIdentifierException;
-
-/**
- * Trait WPAddonTrait
- *
- * @package MadeInItalySLC\WP\Traits
- */
-trait WPAddonTrait
-{
+if (! class_exists(WPAddonTrait::class)) {
     /**
-     * @param string $key
-     * @param array|null $params
-     * @return string
+     * Trait WPAddonTrait
+     *
+     * @package MadeInItalySLC\WP\Traits
      */
-    public function trans(string $key, array $params = null)
+    trait WPAddonTrait
     {
-        if (! $this->has('wp.text_domain')) {
-            throw new InvalidServiceIdentifierException('wp.text_domain');
-        }
+        use RepositoryTrait;
 
-        return (null !== $params) ?
-            __(sprintf($key, ...$params), $this->get('wp.text_domain')) :
-            __($key, $this->get('wp.text_domain'));
+        /**
+         * @param string $key
+         * @param array|null $params
+         * @return string
+         */
+        public function trans(string $key, array $params = null)
+        {
+            return (null !== $params) ?
+                __(sprintf($key, ...$params), $this->repo('wp.text_domain')) :
+                __($key, $this->config('wp.text_domain'));
+        }
     }
 }

@@ -3,7 +3,10 @@
     "name": "madeinitalyslc/mit-wp-framework",
     "description": "",
     "license": "MIT",
-    "require": {},
+    "require": {
+        "illuminate/container": "^5.7@dev",
+        "illuminate/config": "^5.7@dev"
+    },
     "require-dev": {},
     "autoload": {
         "psr-4": {

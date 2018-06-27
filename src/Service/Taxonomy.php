@@ -2,72 +2,75 @@
 
 namespace MadeInItalySLC\WP\Service;
 
-use MadeInItalySLC\Toolbox\ContainerAwareTrait;
-use MadeInItalySLC\Toolbox\Contract\ContainerAwareTraitInterface;
-use Psr\Container\ContainerInterface;
+use Illuminate\Contracts\Container\Container;
+use MadeInItalySLC\WP\Contract\ContainerAwareInterface;
+use MadeInItalySLC\WP\Contract\Service\TaxonomyInterface;
+use MadeInItalySLC\WP\Traits\ContainerAwareTrait;
 
-/**
- * Class Taxonomy
- *
- * @package MadeInItalySLC\WP\Service
- */
-abstract class Taxonomy implements ContainerAwareTraitInterface
-{
-    use ContainerAwareTrait;
-
+if (! class_exists(Taxonomy::class)) {
     /**
-     * @return string
-     */
-    abstract public function getId();
-
-    /**
-     * @return array
-     */
-    abstract public function getPostTypes();
-
-    /**
-     * @return array
-     */
-    abstract public function getLabels();
-
-    /**
-     * @return array
-     */
-    abstract public function getArgs();
-
-    /**
-     * Taxonomy constructor.
+     * Class Taxonomy
      *
-     * @param ContainerInterface $c
+     * @package MadeInItalySLC\WP\Service
      */
-    public function __construct(ContainerInterface $c)
+    abstract class Taxonomy implements ContainerAwareInterface, TaxonomyInterface
     {
-        $this->setContainer($c);
-    }
+        use ContainerAwareTrait;
 
-    /**
-     *
-     */
-    public function register()
-    {
-        $args = array_merge($this->getArgs(), [
-            'labels' => $this->getLabels()
-        ]);
+        /**
+         * @return string
+         */
+        abstract public function getId();
 
-        register_taxonomy($this->getId(), $this->getPostTypes(), $args);
-    }
+        /**
+         * @return array
+         */
+        abstract public function getPostTypes();
 
-    /**
-     * @todo implement tax query
-     *
-     * @param array $args
-     * @return array|mixed
-     */
-    public function get(array $args = [])
-    {
-        return get_posts(array_merge($args, [
-            'post_type' => $this->getId(),
-            'posts_per_page' => -1
-        ]));
+        /**
+         * @return array
+         */
+        abstract public function getLabels();
+
+        /**
+         * @return array
+         */
+        abstract public function getArgs();
+
+        /**
+         * Taxonomy constructor.
+         *
+         * @param Container $c
+         */
+        public function __construct(Container $c)
+        {
+            $this->setContainer($c);
+        }
+
+        /**
+         *
+         */
+        public function register()
+        {
+            $args = array_merge($this->getArgs(), [
+                'labels' => $this->getLabels()
+            ]);
+
+            register_taxonomy($this->getId(), $this->getPostTypes(), $args);
+        }
+
+        /**
+         * @todo implement tax query
+         *
+         * @param array $args
+         * @return array|mixed
+         */
+        public function get(array $args = [])
+        {
+            return get_posts(array_merge($args, [
+                'post_type' => $this->getId(),
+                'posts_per_page' => -1
+            ]));
+        }
     }
 }
