@@ -2,7 +2,8 @@
 
 namespace MadeInItalySLC\WP\Contract;
 
-use Illuminate\Contracts\Container\Container as ContainerInterface;
+use Illuminate\Contracts\Container\Container as LaravelContainerInterface;
+use Psr\Container\ContainerInterface;
 
 if (! class_exists(AddonInterface::class)) {
     /**
@@ -10,7 +11,7 @@ if (! class_exists(AddonInterface::class)) {
      *
      * @package MadeInItalySLC\WP\Contract
      */
-    interface AddonInterface extends ContainerInterface, ConfigTraitInterface
+    interface AddonInterface extends ContainerInterface, ConfigTraitInterface, LaravelContainerInterface
     {
         /**
          * @return string
