@@ -13,5 +13,6 @@
             "MadeInItalySLC\\WP\\": "src/"
         }
     },
-    "autoload-dev": {}
+    "autoload-dev": {},
+    "minimum-stability": "dev"
 }
