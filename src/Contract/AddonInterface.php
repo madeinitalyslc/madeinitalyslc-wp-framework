@@ -2,13 +2,15 @@
 
 namespace MadeInItalySLC\WP\Contract;
 
+use Illuminate\Contracts\Container\Container as ContainerInterface;
+
 if (! class_exists(AddonInterface::class)) {
     /**
      * Interface AddonInterface
      *
      * @package MadeInItalySLC\WP\Contract
      */
-    interface AddonInterface extends ConfigTraitInterface
+    interface AddonInterface extends ContainerInterface, ConfigTraitInterface
     {
         /**
          * @return string
