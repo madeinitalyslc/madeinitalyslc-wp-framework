@@ -18,6 +18,9 @@ if (! class_exists(Addon::class)) {
     {
         use ConfigTrait, WPAddonTrait;
 
+        /**
+         * Addon constructor.
+         */
         public function __construct()
         {
             $this->bindIf('config', function () {
