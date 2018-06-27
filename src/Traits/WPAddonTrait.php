@@ -20,8 +20,8 @@ if (! class_exists(WPAddonTrait::class)) {
         public function trans(string $key, array $params = null)
         {
             return (null !== $params) ?
-                __(sprintf($key, ...$params), $this->repo('wp.text_domain')) :
-                __($key, $this->config('wp.text_domain'));
+                __(sprintf($key, ...$params), $this->get('wp.text_domain')) :
+                __($key, $this->get('wp.text_domain'));
         }
     }
 }
