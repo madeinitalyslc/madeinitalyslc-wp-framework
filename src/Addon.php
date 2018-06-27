@@ -2,9 +2,11 @@
 
 namespace MadeInItalySLC\WP;
 
+use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use MadeInItalySLC\WP\Contract\AddonInterface;
-use MadeInItalySLC\WP\Traits;
+use MadeInItalySLC\WP\Traits\ConfigTrait;
+use MadeInItalySLC\WP\Traits\WPAddonTrait;
 
 if (! class_exists(Addon::class)) {
     /**
@@ -14,21 +16,15 @@ if (! class_exists(Addon::class)) {
      */
     abstract class Addon extends Container implements AddonInterface
     {
-        use Traits\WPAddonTrait, Traits\RepositoryTrait;
+        use ConfigTrait, WPAddonTrait;
 
-        /**
-         * Addon constructor.
-         */
         public function __construct()
         {
-            // todo: useless container binding
-            $this->bind('wp.id', function (Container $c) {
-                return $this->getId();
-            });
-
-            $this->bind('wp.text_domain', function (Container $c) {
-                return $this->getTextDomain();
+            $this->bindIf('config', function () {
+                return new Repository();
             });
         }
+
+
     }
 }
