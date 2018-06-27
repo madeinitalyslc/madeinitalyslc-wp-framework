@@ -25,6 +25,8 @@ if (! class_exists(RepositoryTrait::class)) {
         public function setRepository(string $key, array $values = [])
         {
             $this->repos[$key] = new Repository($values);
+
+            return $this->repos[$key];
         }
 
         /**
