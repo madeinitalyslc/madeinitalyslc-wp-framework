@@ -5,9 +5,7 @@ namespace MadeInItalySLC\WP;
 use Illuminate\Config\Repository;
 use Illuminate\Container\Container;
 use MadeInItalySLC\WP\Contract\AddonInterface;
-use MadeInItalySLC\WP\Contract\ConfigTraitInterface;
 use MadeInItalySLC\WP\Traits\ConfigTrait;
-use MadeInItalySLC\WP\Traits\WPAddonTrait;
 
 if (! class_exists(Addon::class)) {
     /**
@@ -15,9 +13,9 @@ if (! class_exists(Addon::class)) {
      *
      * @package MadeInItalySLC\WP
      */
-    abstract class Addon extends Container implements AddonInterface, ConfigTraitInterface
+    abstract class Addon extends Container implements AddonInterface
     {
-        use ConfigTrait, WPAddonTrait;
+        use ConfigTrait;
 
         /**
          * Addon constructor.
@@ -29,6 +27,16 @@ if (! class_exists(Addon::class)) {
             });
         }
 
-
+        /**
+         * @param string $key
+         * @param array|null $params
+         * @return string
+         */
+        public function trans(string $key, array $params = null) : string
+        {
+            return (null !== $params) ?
+                __(sprintf($key, ...$params), $this->getTextDomain()) :
+                __($key, $this->getTextDomain());
+        }
     }
 }

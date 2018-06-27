@@ -8,7 +8,7 @@ if (! class_exists(AddonInterface::class)) {
      *
      * @package MadeInItalySLC\WP\Contract
      */
-    interface AddonInterface
+    interface AddonInterface extends ConfigTraitInterface
     {
         /**
          * @return string
@@ -19,5 +19,12 @@ if (! class_exists(AddonInterface::class)) {
          * @return string
          */
         public function getTextDomain() : string;
+
+        /**
+         * @param string $key
+         * @param array|null $params
+         * @return string
+         */
+        public function trans(string $key, array $params = null) : string;
     }
 }
