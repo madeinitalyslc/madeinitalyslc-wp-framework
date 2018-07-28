@@ -14,7 +14,9 @@
         "illuminate/container": "^5.6",
         "illuminate/config": "^5.6"
     },
-    "require-dev": {},
+    "require-dev": {
+        "symfony/var-dumper": "^4.1"
+    },
     "autoload": {
         "psr-4": {
             "MadeInItalySLC\\WP\\": "src/"
